@@ -193,6 +193,190 @@ cout<<endl;
 }
    }
 else
+if (strcmp(pachet[card1].simbol,"inima")==0)
+   {
+       if (pachet[card1].numar==1)
+       {cout<<" ____________"<<endl;
+        cout<<"|A<3         |"<<endl;
+        cout<<"|  _______   |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |_______|  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"|         A<3|"<<endl;
+        cout<<"|____________|"<<endl;
+        cout<<endl;
+       }
+if (pachet[card1].numar==2)
+{
+cout<<" ____________"<<endl;
+cout<<"|2<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|         2<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==3)
+{
+cout<<" ____________"<<endl;
+cout<<"|3<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|     <3     |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|         3<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==4)
+{
+cout<<" ____________"<<endl;
+cout<<"|4<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         4<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==5)
+{
+cout<<" ____________"<<endl;
+cout<<"|5<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|     <3     |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         5<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==6)
+{
+cout<<" ____________"<<endl;
+cout<<"|6<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         6<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+
+}
+if (pachet[card1].numar==7)
+{
+cout<<" ____________"<<endl;
+cout<<"|7<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         7<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==8)
+{
+cout<<" ____________"<<endl;
+cout<<"|8<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         8<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==9)
+{
+cout<<" ____________"<<endl;
+cout<<"|9<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|     <3     |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         9<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==13)
+{
+cout<<" ____________"<<endl;
+cout<<"|K<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         K<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==12)
+{
+cout<<" ____________"<<endl;
+cout<<"|Q<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         Q<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==11)
+{
+cout<<" ____________"<<endl;
+cout<<"|J<3         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3 <3 <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|         J<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==10)
+{
+cout<<" ____________"<<endl;
+cout<<"|10<3        |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|  <3    <3  |"<<endl;
+cout<<"|        10<3|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
 
 }
 
