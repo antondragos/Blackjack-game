@@ -33,6 +33,16 @@ void initializareFrecventa()
     for(i=0;i<52;i++)
     pachet[i].aparitie=0;
 }
+void hit(int &suma)
+{
+    int d;
+    d=lansare_carte();
+    if(pachet[d].numar>10)
+        suma=suma+10;
+    else
+        suma=suma+pachet[d].numar;
+    cout<<pachet[d].numar<<"->"<<pachet[d].simbol;
+}
 int main()
 {unsigned int i,b;
 unsigned int choice;
@@ -44,7 +54,8 @@ cout<<endl;
 if (choice==1)
 {int card,card2;
 int sumajucator=0,sumacomputer=0;
-card=lansare_carte();
+{//computer
+    card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
     sumacomputer=pachet[card2].numar+pachet[card].numar;
@@ -56,7 +67,15 @@ else
     cout<<pachet[card].numar<<"->"<<pachet[card].simbol;
     cout<<" ";
     cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<"("<<sumacomputer<<")"<<endl;
-
+ if (sumacomputer<16)
+ {
+     cout<<endl<<"Computerul alege sa mai traga o carte:"<<endl;
+     hit(sumacomputer);
+     cout<<" ("<<sumacomputer<<")";
+     cout<<endl;
+ }
+}
+{ char hitstay;
 card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
@@ -70,6 +89,28 @@ else
     cout<<pachet[card].numar<<"->"<<pachet[card].simbol;
     cout<<" ";
     cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<"("<<sumajucator<<")"<<endl;
+do{ cout<<"Do you want to hit(press h) or to stay(press s):";
+   cin >> hitstay;
+   cout<<endl;
+   if(hitstay=='h')
+   {
+    hit(sumajucator);
+   cout<<" ("<<sumajucator<<")";
+   cout<<endl;
+   }
+  } while(hitstay!='s');
+}
+cout<<endl;
+cout<<"Dealerul are "<<sumacomputer<<" puncte";
+cout<<endl;
+cout<<"Dumneavoastra aveti "<<sumajucator<<" puncte";
+cout<<endl;
+if(sumajucator<=21&&sumacomputer<=21)
+    cout<<"Felicitari, ati castigat!";
+else if (sumajucator>21)
+    cout<<"Dealerul a castigat";
+     else
+        cout<<"Felicitari, ati castigat!";
 }
 return 0;
 
