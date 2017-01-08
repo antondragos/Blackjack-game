@@ -5,3 +5,5 @@ struct carte{
 };
 void creare_pachet();
 void randCard(unsigned int & a);
+void initializareFrecventa();
+int lansare_carte();

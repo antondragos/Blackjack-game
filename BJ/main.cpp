@@ -43,18 +43,33 @@ cin>>choice;
 cout<<endl;
 if (choice==1)
 {int card,card2;
+int sumajucator=0,sumacomputer=0;
 card=lansare_carte();
 card2=lansare_carte();
+if(pachet[card2].numar<11&& pachet[card].numar<11)
+    sumacomputer=pachet[card2].numar+pachet[card].numar;
+else if(pachet[card2].numar<11)
+    sumacomputer=10+pachet[card2].numar;
+else
+   sumacomputer=10+pachet[card].numar;
     cout<<"Dealer's hand:";
     cout<<pachet[card].numar<<"->"<<pachet[card].simbol;
     cout<<" ";
-    cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<endl;
+    cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<"("<<sumacomputer<<")"<<endl;
+
 card=lansare_carte();
 card2=lansare_carte();
+if(pachet[card2].numar<11&& pachet[card].numar<11)
+    sumajucator=pachet[card2].numar+pachet[card].numar;
+else if(pachet[card2].numar<11)
+    sumajucator=10+pachet[card2].numar;
+else
+   sumajucator=10+pachet[card].numar;
+
     cout<<"Your hand:";
     cout<<pachet[card].numar<<"->"<<pachet[card].simbol;
     cout<<" ";
-    cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<endl;
+    cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<"("<<sumajucator<<")"<<endl;
 }
 return 0;
 
