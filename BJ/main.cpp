@@ -377,7 +377,379 @@ cout<<"|        10<3|"<<endl;
 cout<<"|____________|"<<endl;
 cout<<endl;
 }
+   }
+else
+if (strcmp(pachet[card1].simbol,"frunza")==0)
+   {
+       if (pachet[card1].numar==1)
+       {cout<<" ____________"<<endl;
+        cout<<"|A{)         |"<<endl;
+        cout<<"|  _______   |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |_______|  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"|         A{)|"<<endl;
+        cout<<"|____________|"<<endl;
+        cout<<endl;
+       }
+if (pachet[card1].numar==2)
+{
+cout<<" ____________"<<endl;
+cout<<"|2{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|         2{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==3)
+{
+cout<<" ____________"<<endl;
+cout<<"|3{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|     {)     |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|         3{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==4)
+{
+cout<<" ____________"<<endl;
+cout<<"|4{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         4{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==5)
+{
+cout<<" ____________"<<endl;
+cout<<"|5{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|     {)     |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         5{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==6)
+{
+cout<<" ____________"<<endl;
+cout<<"|6{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         6{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
 
+}
+if (pachet[card1].numar==7)
+{
+cout<<" ____________"<<endl;
+cout<<"|7{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         7{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==8)
+{
+cout<<" ____________"<<endl;
+cout<<"|8{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         8{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==9)
+{
+cout<<" ____________"<<endl;
+cout<<"|9{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|     {)     |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         9{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==13)
+{
+cout<<" ____________"<<endl;
+cout<<"|K{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         K{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==12)
+{
+cout<<" ____________"<<endl;
+cout<<"|Q{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         Q{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==11)
+{
+cout<<" ____________"<<endl;
+cout<<"|J{)         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {) {) {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|         J{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==10)
+{
+cout<<" ____________"<<endl;
+cout<<"|10{)        |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|  {)    {)  |"<<endl;
+cout<<"|        10{)|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+}
+else
+if (strcmp(pachet[card1].simbol,"trefla")==0)
+   {
+       if (pachet[card1].numar==1)
+       {cout<<" ____________"<<endl;
+        cout<<"|A*          |"<<endl;
+        cout<<"|  _______   |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |_______|  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"| |       |  |"<<endl;
+        cout<<"|          A*|"<<endl;
+        cout<<"|____________|"<<endl;
+        cout<<endl;
+       }
+if (pachet[card1].numar==2)
+{
+cout<<" ____________"<<endl;
+cout<<"|2*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|          2*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==3)
+{
+cout<<" ____________"<<endl;
+cout<<"|3*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|     *      |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|         3* |"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==4)
+{
+cout<<" ____________"<<endl;
+cout<<"|4*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          4*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==5)
+{
+cout<<" ____________"<<endl;
+cout<<"|5*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|      *     |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          5*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==6)
+{
+cout<<" ____________"<<endl;
+cout<<"|6*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          6*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+
+}
+if (pachet[card1].numar==7)
+{
+cout<<" ____________"<<endl;
+cout<<"|7*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          7*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==8)
+{
+cout<<" ____________"<<endl;
+cout<<"|8*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          8*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==9)
+{
+cout<<" ____________"<<endl;
+cout<<"|9*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|     *      |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          9*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==13)
+{
+cout<<" ____________"<<endl;
+cout<<"|K*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          K*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==12)
+{
+cout<<" ____________"<<endl;
+cout<<"|Q*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          Q*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==11)
+{
+cout<<" ____________"<<endl;
+cout<<"|J*          |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *  *   *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|          J*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+if (pachet[card1].numar==10)
+{
+cout<<" ____________"<<endl;
+cout<<"|10*         |"<<endl;
+cout<<"|            |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|  *      *  |"<<endl;
+cout<<"|         10*|"<<endl;
+cout<<"|____________|"<<endl;
+cout<<endl;
+}
+}
 }
 
 void randCard(unsigned int & a)
