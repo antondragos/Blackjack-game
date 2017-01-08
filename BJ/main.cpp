@@ -6,7 +6,7 @@
 #include<string.h>
 using namespace std;
 carte pachet[52];
-void showcard(int card1,)
+void showcard(int card1)
 { if (strcmp(pachet[card1].simbol,"romb")==0)
    {
        if (pachet[card1].numar==1)
@@ -780,16 +780,16 @@ void initializareFrecventa()
     for(i=0;i<52;i++)
     pachet[i].aparitie=0;
 }
-void hit(int &suma)
+void hit(int &suma,int &cartea)
 {
-    int d;
-    d=lansare_carte();
-    if(pachet[d].numar>10)
+
+    cartea=lansare_carte();
+    if(pachet[cartea].numar>10)
         suma=suma+10;
     else
-        suma=suma+pachet[d].numar;
-    cout<<pachet[d].numar<<"->"<<pachet[d].simbol;
+        suma=suma+pachet[cartea].numar;
 }
+
 int main()
 {unsigned int i,b;
 unsigned int choice;
@@ -810,14 +810,16 @@ else if(pachet[card2].numar<11)
     sumacomputer=10+pachet[card2].numar;
 else
    sumacomputer=10+pachet[card].numar;
-    cout<<"Dealer's hand:";
-    cout<<pachet[card].numar<<"->"<<pachet[card].simbol;
+    cout<<"Dealer's hand:"<<endl;
+   showcard(card);
     cout<<" ";
-    cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<"("<<sumacomputer<<")"<<endl;
- if (sumacomputer<16)
+    showcard(card2);
+    cout<<"("<<sumacomputer<<")"<<endl;
+ while (sumacomputer<16)
  {
      cout<<endl<<"Computerul alege sa mai traga o carte:"<<endl;
-     hit(sumacomputer);
+     hit(sumacomputer,card2);
+     showcard(card2);
      cout<<" ("<<sumacomputer<<")";
      cout<<endl;
  }
@@ -832,16 +834,18 @@ else if(pachet[card2].numar<11)
 else
    sumajucator=10+pachet[card].numar;
 
-    cout<<"Your hand:";
-    cout<<pachet[card].numar<<"->"<<pachet[card].simbol;
+    cout<<"Your hand:"<<endl;
+    showcard(card);
+    showcard(card2);
     cout<<" ";
-    cout<<pachet[card2].numar<<"->"<<pachet[card2].simbol<<"("<<sumajucator<<")"<<endl;
+    cout<<"("<<sumajucator<<")"<<endl;
 do{ cout<<"Do you want to hit(press h) or to stay(press s):";
    cin >> hitstay;
    cout<<endl;
    if(hitstay=='h')
    {
-    hit(sumajucator);
+    hit(sumajucator,card2);
+    showcard(card2);
    cout<<" ("<<sumajucator<<")";
    cout<<endl;
    }
@@ -860,5 +864,4 @@ else if (sumajucator>21)
         cout<<"Felicitari, ati castigat!";
 }
 return 0;
-
 }
