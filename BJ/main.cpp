@@ -799,9 +799,10 @@ cout<<"Alegeti modul de joc pe care il doriti"<<endl<<"Press 1 for playing with 
 cin>>choice;
 cout<<endl;
 system("CLS");
-while (choice==1)
-{int card,card2;
+int card,card2;
 int sumajucator=0,asi=0,sumacomputer=0;
+while (choice==1)
+{initializareFrecventa();
 {//computer
     card=lansare_carte();
 card2=lansare_carte();
@@ -932,8 +933,176 @@ if(sumajucator==sumacomputer&&ok==0)
 cout<<endl;
 system("PAUSE");
 system("CLS");
-cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 1 si enter. Daca nu, apasati 2):";
+cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 1 si enter. Daca nu, apasati 3):";
 cin>>choice;
 }
+
+while(choice==2)
+{char player1[100],player2[100];
+    int card,card2;
+   initializareFrecventa();
+    cout<<"Introduceti numele primului jucator:";
+    cin>>player1;
+    cout<<endl<<"Introduceti numele celui de-al doilea jucator:";
+    cin>>player2;
+    cout<<endl;
+    cout<<"Salutari "<<player1<<" si "<<player2<<"! Distractie placuta!";
+    cout<<endl;
+    system("PAUSE");
+    system("CLS");
+
+    cout<<"Buna, "<<player1<<", tu vei incepe primul"<<endl;
+    system("Pause");
+    system("CLS");
+     char hitstay3,hitstay2;
+     int sumajucator2=0,sumajucator3=0;
+
+asi=0;
+card=lansare_carte();
+card2=lansare_carte();
+if(pachet[card2].numar<11&& pachet[card].numar<11)
+    sumajucator2=pachet[card2].numar+pachet[card].numar;
+else if(pachet[card2].numar<11)
+    sumajucator2=10+pachet[card2].numar;
+else
+   sumajucator2=10+pachet[card].numar;
+if(pachet[card2].numar==1)
+{asi++;
+ sumajucator2=sumajucator2+10;
+}
+if(pachet[card].numar==1)
+{
+    asi++;
+    sumajucator2=sumajucator2+10;
+}
+if(sumajucator2>21&&asi!=0)
+{
+    asi--;
+    sumajucator2=sumajucator2-10;
+}
+
+    cout<<"Your hand:"<<endl;
+    showcard(card);
+    showcard(card2);
+    cout<<" ";
+    cout<<"("<<sumajucator2<<")"<<endl;
+do{ cout<<player1<<", do you want to hit(press h) or to stay(press s)?:";
+   cin >> hitstay2;
+   system("CLS");
+   cout<<endl;
+   if(hitstay2=='h')
+   {
+    hit(sumajucator2,card2);
+     if(pachet[card2].numar==1)
+     {
+         asi++;
+         sumajucator2=sumajucator2+10;
+     }
+     if (sumajucator2>21&&asi!=0)
+     {
+         asi--;
+         sumajucator2=sumajucator2-10;
+     }
+    showcard(card2);
+   cout<<" ("<<sumajucator2<<")";
+   cout<<endl;
+   }
+   if(sumajucator2>21)
+    system("PAUSE");
+  } while(hitstay2!='s'&&sumajucator2<=21);
+system("CLS");
+ cout<<"Buna, "<<player2<<", acum e randul tau "<<endl;
+    system("Pause");
+    system("CLS");
+
+    asi=0;
+card=lansare_carte();
+card2=lansare_carte();
+if(pachet[card2].numar<11&& pachet[card].numar<11)
+    sumajucator3=pachet[card2].numar+pachet[card].numar;
+else if(pachet[card2].numar<11)
+    sumajucator3=10+pachet[card2].numar;
+else
+   sumajucator3=10+pachet[card].numar;
+if(pachet[card2].numar==1)
+{asi++;
+ sumajucator3=sumajucator3+10;
+}
+if(pachet[card].numar==1)
+{
+    asi++;
+    sumajucator3=sumajucator3+10;
+}
+if(sumajucator3>21&&asi!=0)
+{
+    asi--;
+    sumajucator3=sumajucator3-10;
+}
+
+    cout<<"Your hand:"<<endl;
+    showcard(card);
+    showcard(card2);
+    cout<<" ";
+    cout<<"("<<sumajucator3<<")"<<endl;
+do{ cout<<player2<<", do you want to hit(press h) or to stay(press s)?:";
+   cin >> hitstay3;
+   system("CLS");
+   cout<<endl;
+   if(hitstay3=='h')
+   {
+    hit(sumajucator3,card2);
+     if(pachet[card2].numar==1)
+     {
+         asi++;
+         sumajucator3=sumajucator3+10;
+     }
+     if (sumajucator3>21&&asi!=0)
+     {
+         asi--;
+         sumajucator3=sumajucator3-10;
+     }
+    showcard(card2);
+   cout<<" ("<<sumajucator3<<")";
+   cout<<endl;
+   }
+   if(sumajucator3>21)
+    system("PAUSE");
+  } while(hitstay3!='s'&&sumajucator3<=21);
+system("CLS");
+cout<<endl;
+cout<<player1<<" are:"<<sumajucator2<<" puncte";
+cout<<endl;
+cout<<player2<<" are:"<<sumajucator3<<" puncte";
+cout<<endl;
+if(sumajucator2<=21&&sumajucator3<=21&&sumajucator2<sumajucator3)
+    cout<<"Felicitari, "<<player2<<", ai castigat!";
+if(sumajucator2<=21&&sumajucator3<=21&&sumajucator2>sumajucator3)
+cout<<"Felicitari, "<<player1<<", ai castigat!";
+int ok2=0;
+if(sumajucator2>22&&sumajucator3>22)
+{
+    cout<<"Remiza";
+    ok2=1;
+}
+if (sumajucator2>21&&sumajucator3<22)
+    {cout<<"Felicitari, "<<player2<<", ai castigat!";
+    ok2=1;}
+if (ok2==0&&sumajucator3>21&&sumajucator2<=21)
+    {ok2=1;
+    cout<<"Felicitari, "<<player1<<", ai castigat!";}
+if(sumajucator3==sumajucator2&&ok2==0)
+{
+ ok2=1;
+ cout<<"Remiza";
+}
+cout<<endl;
+system("PAUSE");
+system("CLS");
+
+cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 2 si enter. Daca nu, apasati 3):";
+cin>>choice;
+
+}
+
 return 0;
 }
