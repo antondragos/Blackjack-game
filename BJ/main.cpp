@@ -4,8 +4,31 @@
 #include<cstdlib>
 #include<ctime>
 #include<string.h>
+#include<stdio.h>
 using namespace std;
 carte pachet[52];
+void cinhitstay(char & hitst, char N[100])
+{
+    if(strlen(N)>1)
+        cout<<endl<<"Selectie gresita. Mai incercati:";
+    else if(strlen(N)==1&&(N[0]!='h'&& N[0]!='s'&& N[0]!='d'))
+        cout<<endl<<"Selectie gresita.Mai incercati:";
+        else if(strlen(N)==0)
+            cout<<endl<<"Selectie gresita.Mai incercati"<<endl;
+            else hitst=N[0];
+}
+void citirealegere(unsigned int &alegere, char s[100])
+{
+    if(strlen(s)>1)
+        cout<<endl<<"Selectie gresita.Mai incercati"<<endl;
+    else if(strlen(s)==1&&s[0]-'0'>3)
+        cout<<endl<<"Selectie gresita.Mai incercati"<<endl;
+        else if(strlen(s)==0)
+            cout<<endl<<"Selectie gresita.Mai incercati"<<endl;
+            else if(strlen(s)!=0)
+                alegere=s[0]-'0';
+
+}
 void showcard(int card1)
 { if (strcmp(pachet[card1].simbol,"romb")==0)
    {
@@ -792,12 +815,17 @@ void hit(int &suma,int &cartea)
 
 int main()
 {unsigned int i,b;
+char s[100];
+    char nin[100];
 unsigned int choice;
 creare_pachet();
 initializareFrecventa();
 cout<<"Alegeti modul de joc pe care il doriti"<<endl<<"Press 1 for playing with computer"<<endl<<"Press 2 for playing with your friend"<<endl<<"Alegerea dumneavoastra:";
-cin>>choice;
-cout<<endl;
+choice=0;
+while(choice==0)
+{gets(s);
+citirealegere(choice,s);
+}
 system("CLS");
 int card,card2;
 int sumajucator=0,asi=0,sumacomputer=0;
@@ -828,8 +856,7 @@ if(sumacomputer>21&&asi!=0)
 }
     cout<<"Dealer's hand:"<<endl;
    showcard(card);
-    cout<<" ";
-    showcard(card2);
+   showcard(card2);
     cout<<"("<<sumacomputer<<")"<<endl;
     system("PAUSE");
     system("CLS");
@@ -856,6 +883,7 @@ if(sumacomputer>21&&asi!=0)
 }
 { char hitstay;
 asi=0;
+char nin[100];
 card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
@@ -878,14 +906,17 @@ if(sumajucator>21&&asi!=0)
     asi--;
     sumajucator=sumajucator-10;
 }
-
     cout<<"Your hand:"<<endl;
+    hitstay='y';
     showcard(card);
     showcard(card2);
     cout<<" ";
     cout<<"("<<sumajucator<<")"<<endl;
 do{ cout<<"Do you want to hit(press h) or to stay(press s):";
-   cin >> hitstay;
+   while(hitstay=='y')
+   {gets(nin);
+   cinhitstay(hitstay,nin);
+   }
    system("CLS");
    cout<<endl;
    if(hitstay=='h')
@@ -937,7 +968,7 @@ cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 1 si enter. Daca nu, apasa
 cin>>choice;
 }
 
-while(choice==2)
+if (choice==2)
 {char player1[100],player2[100];
     int card,card2;
    initializareFrecventa();
@@ -950,11 +981,11 @@ while(choice==2)
     cout<<endl;
     system("PAUSE");
     system("CLS");
-
-    cout<<"Buna, "<<player1<<", tu vei incepe primul"<<endl;
+while(choice==2)
+    {cout<<"Buna, "<<player1<<", tu vei incepe primul"<<endl;
     system("Pause");
     system("CLS");
-     char hitstay3,hitstay2;
+     char hitstay3='y',hitstay2='y';
      int sumajucator2=0,sumajucator3=0;
 
 asi=0;
@@ -987,7 +1018,10 @@ if(sumajucator2>21&&asi!=0)
     cout<<" ";
     cout<<"("<<sumajucator2<<")"<<endl;
 do{ cout<<player1<<", do you want to hit(press h) or to stay(press s)?:";
-   cin >> hitstay2;
+   while(hitstay2=='y')
+   {gets(nin);
+   cinhitstay(hitstay2,nin);
+   }
    system("CLS");
    cout<<endl;
    if(hitstay2=='h')
@@ -1045,7 +1079,10 @@ if(sumajucator3>21&&asi!=0)
     cout<<" ";
     cout<<"("<<sumajucator3<<")"<<endl;
 do{ cout<<player2<<", do you want to hit(press h) or to stay(press s)?:";
-   cin >> hitstay3;
+   while(hitstay3=='y')
+   {gets(nin);
+   cinhitstay(hitstay3,nin);
+   }
    system("CLS");
    cout<<endl;
    if(hitstay3=='h')
@@ -1100,9 +1137,12 @@ system("PAUSE");
 system("CLS");
 
 cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 2 si enter. Daca nu, apasati 3):";
-cin>>choice;
-
+choice=0;
+while(choice==0)
+{gets(s);
+citirealegere(choice,s);
 }
+}}
 
 return 0;
 }

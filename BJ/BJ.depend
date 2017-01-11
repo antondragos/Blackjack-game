@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1483981791 source:c:\users\razvan\desktop\blackjack-game\bj\main.cpp
+1484156653 source:c:\users\razvan\desktop\blackjack-game\bj\main.cpp
 	"BJ_header.h"
 	<iostream>
 	<stdio.h>
 	<cstdlib>
 	<ctime>
 	<string.h>
+	<stdio.h>
 
 1483896794 c:\users\razvan\desktop\blackjack-game\bj\bj_header.h
 
