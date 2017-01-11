@@ -7,6 +7,67 @@
 #include<stdio.h>
 using namespace std;
 carte pachet[52];
+void info()
+{
+    cout<<"                                 Blackjack"<<endl<<endl<<endl;
+    cout<<"     Acest joc este unul din cele mai populare jocuri de carti din lume. Pentru a juca se folosesc 52 din cele 54 de carti de joc "<<endl;
+    cout<<"exclusi fiind cei doi jokeri. Scopul jocului este de a ajunge cat mai aproape de 21 de puncte, fara a depasi aceasta valoare."<<endl;
+    cout<<endl<<"Fiecare carte valoreaza un anumit punctaj, indiferent de simbolul pe care cartea il are. Punctajele sunt urmatoarele:"<<endl;
+    cout<<"-Asul valoreaza 1 sau 11, in functie de punctajul de care jucatorul are nevoie"<<endl;
+    cout<<"-Cartile numerotate cu valori de la 2 la 10 valoreaza exact atatea puncte cat numarul pe care il poarta"<<endl;
+    cout<<"-Juva, dama si popa valoreaza cate 10 puncte fiecare"<<endl;
+    cout<<endl<<"       Acest joc se poate juca impotriva dealerului sau impotriva unui prieten. In ambele moduri de joc, jucatorii vor primi "<<endl;
+    cout<<"initial cate doua carti. Dupa aceea fiecare va avea posibilitatea de a alege daca vrea sa mai primeasca o carte(apasand h) sau "<<endl;
+    cout<<"ramana cu cele pe care le are pana acum. Castigatorul va fi cel care va avea punctajul cel mai apropiat de 21, dar fara sa treaca"<<endl;
+    cout<<"de acest numar. ";
+    cout<<"     Jocul se poate juca plasand o suma de intrare. In cazul jocului cu dealerul, cel din urma va paria si el suma ceruta de jucator."<<endl;
+    cout<<"Cel ce va castiga runda va castiga si banii pusi in joc. In cazul jocului contra unui prieten suma va pariata va fi suma pariata de "<<endl;
+    cout<<"jucatorul care a oferit cel mai putin";
+    cout<<endl<<endl<<endl;
+    cout<<"                                 Bucurati-va de joc!";
+}
+void meniu()
+{
+int j=1;
+system("Color 7C");
+cout<<endl;
+cout<<(char)201;
+for(int i=1;i<100;i++)
+    {;cout<<(char)205;}
+cout<<(char)187<<endl;
+
+    for(int i=1;i<25;i++)
+    {cout<<(char)186;
+    j=0;
+    if (i==3)
+        {j=j+strlen("                     Alegeti modul de joc pe care il doriti");
+          cout<<"                     Alegeti modul de joc pe care il doriti";}
+    if(i==5)
+    {
+         cout<<"      Apasati 1 pentru a juca impotriva calculatorului";
+        j=j+strlen("      Apasati 1 pentru a juca impotriva calculatorului");
+    }
+    if(i==6)
+    {
+        cout<<"      Apasati 2 pentru a juca impotriva altei persoane";
+     j=j+strlen("      Apasati 2 pentru a juca impotriva altei persoane");
+    }
+    if (i==7)
+    {
+        cout<<"      Apasati 3 pentru a vedea regulile jocului Black Jack";
+    j=j+strlen("      Apasati 3 pentru a vedea regulile jocului Black Jack");
+    }
+    while(j<99)
+        {j++;
+        cout<<" ";}
+    cout<<(char)186;
+    cout<< endl;}
+    cout<<(char)200;
+for(int i=1;i<100;i++) cout<<(char)205;
+cout<<(char)188;
+
+}
+
 void cinhitstay(char & hitst, char N[100])
 {
     if(strlen(N)>1)
@@ -814,14 +875,17 @@ void hit(int &suma,int &cartea)
 }
 
 int main()
-{unsigned int i,b;
+{unsigned int i,menu=1,b;
 char s[100];
     char nin[100];
 unsigned int choice;
-creare_pachet();
+while(menu==1)
+{system("CLS");
+    creare_pachet();
 initializareFrecventa();
-cout<<"Alegeti modul de joc pe care il doriti"<<endl<<"Press 1 for playing with computer"<<endl<<"Press 2 for playing with your friend"<<endl<<"Alegerea dumneavoastra:";
+meniu();
 choice=0;
+menu=0;
 while(choice==0)
 {gets(s);
 citirealegere(choice,s);
@@ -964,8 +1028,18 @@ if(sumajucator==sumacomputer&&ok==0)
 cout<<endl;
 system("PAUSE");
 system("CLS");
-cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 1 si enter. Daca nu, apasati 3):";
-cin>>choice;
+cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 1 si enter. Daca doriti sa va intoarceti la meniu apasati 2 si enter):";
+choice=0;
+while(choice==0)
+{gets(s);
+citirealegere(choice,s);
+}
+if(choice==2)
+    {choice=0;
+     menu=1;}
+     else if (choice==1)
+        choice=1;
+       else choice=0;
 }
 
 if (choice==2)
@@ -1136,13 +1210,27 @@ cout<<endl;
 system("PAUSE");
 system("CLS");
 
-cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 2 si enter. Daca nu, apasati 3):";
+cout<<"Doriti sa mai jucati o runda?(Daca da, apasati 1 si enter. Daca doriti sa reveniti la meniu apasati 2 si enter):";
 choice=0;
 while(choice==0)
 {gets(s);
 citirealegere(choice,s);
 }
-}}
-
+if (choice==1)
+    choice=2;
+if (choice==2)
+{menu=1;
+choice=0;
+}
+}
+}//choice 2
+if (choice==3)
+{
+    system("CLS");
+    info();
+    system("PAUSE");
+    menu=1;
+}
+}
 return 0;
 }
