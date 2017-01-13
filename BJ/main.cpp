@@ -64,7 +64,9 @@ void info()
     cout<<"-Juva, dama si popa valoreaza cate 10 puncte fiecare"<<endl;
     cout<<endl<<"       Acest joc se poate juca impotriva dealerului sau impotriva unui prieten. In ambele moduri de joc, jucatorii vor primi "<<endl;
     cout<<"initial cate doua carti. Dupa aceea fiecare va avea posibilitatea de a alege daca vrea sa mai primeasca o carte(apasand h) sau "<<endl;
-    cout<<"ramana cu cele pe care le are pana acum. Castigatorul va fi cel care va avea punctajul cel mai apropiat de 21, dar fara sa treaca"<<endl;
+    cout<<"ramana cu cele pe care le are pana acum. Jucatorul va avea si o a treia posibilitate, cea de a selecta double(apasand d)."<<endl;
+    cout<<"Cand jucatorul va selecta double, acesta va mai primi o singura carte iar suma pe care a pariat-o va fi dublata."<<endl;
+    cout<<"Castigatorul va fi cel care va avea punctajul cel mai apropiat de 21, dar fara sa treaca"<<endl;
     cout<<"de acest numar. ";
     cout<<"     Jocul se poate juca plasand o suma de intrare. In cazul jocului cu dealerul, cel din urma va paria si el suma ceruta de jucator."<<endl;
     cout<<"Cel ce va castiga runda va castiga si banii pusi in joc. In cazul jocului contra unui prieten suma va pariata va fi suma pariata de "<<endl;
@@ -931,7 +933,7 @@ void hit(int &suma,int &cartea)
 
 int main()
 {unsigned int i,menu=1,sumajucatorcomp;
-int miza,hiddencard,b;
+int miza,loosesingle=0,nrgames=0,hiddencard,dublare=0,b;
 char s[100],s2,jucatorComputer[100],mizacomp[100];
     char nin[100];
 unsigned int choice;
@@ -956,10 +958,15 @@ if (choice==1)
     cout<<endl;
     cout<<"Introduceti un nume de utilizator:";
     cin>>jucatorComputer;
+    nrgames=0;
+    loosesingle=0;
 }
 while (choice==1)
 {initializareFrecventa();
 {//computer
+    dublare=0;
+    loosesingle=0;
+    nrgames++;
     sumajucator=0;
     sumacomputer=0;
 
@@ -1029,6 +1036,7 @@ if(sumacomputer>21&&asi!=0)
 }
 { char hitstay;
 asi=0;
+dublare=0;
 sumajucator=0;
 char nin[100];
 card=lansare_carte();
@@ -1058,13 +1066,25 @@ if(sumajucator>21&&asi!=0)
     hitstay='y';
     showcard(card);
     showcard(card2);
+    int nrcards=2;
     cout<<" ";
     cout<<"("<<sumajucator<<")"<<endl;
-do{ cout<<"Do you want to hit(press h) or to stay(press s):";
+do{ if(sumajucator>=11&&nrcards==2&&lista[cautareJucator(jucatorComputer)].suma>=miza*2)
+    cout<<"Do you want to hit(press h), to stay(press s) or to double(press d):";
+else cout<<"Do you want to hit(press h) or to stay(press s)";
   hitstay='y';
    while(hitstay=='y')
    {gets(nin);
    cinhitstay(hitstay,nin);
+   if(hitstay=='d'&&(sumajucator<11||nrcards!=2))
+    hitstay='y';
+   }
+   if (hitstay=='d')
+   {dublare=1;
+       miza*=2;
+       cout<<endl<<"                        Miza este acum:"<<miza<<endl;
+       system("PAUSE");
+       hitstay='h';
    }
    system("CLS");
  if(hitstay=='h')
@@ -1082,11 +1102,12 @@ do{ cout<<"Do you want to hit(press h) or to stay(press s):";
         asi--;
     }
     showcard(card2);
+    nrcards++;
     cout<<endl<<"("<<sumajucator<<")"<<endl;
  }
    if(sumajucator>21)
     system("PAUSE");
-  } while(hitstay=='h'&&sumajucator<=21);
+  } while(hitstay=='h'&&sumajucator<=21&&dublare==0);
 system("CLS");}
 int ok1=0;
 cout<<endl;
@@ -1099,22 +1120,27 @@ cout<<"Dumneavoastra aveti "<<sumajucator<<" puncte";
 cout<<endl;
 if(sumajucator<=21&&sumacomputer<=21&&sumacomputer<sumajucator)
     {cout<<"Felicitari, ati castigat!";
+    loosesingle=0;
     lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma +miza;}
 if(sumajucator<=21&&sumacomputer<=21&&sumacomputer>sumajucator)
 {cout<<"Dealerul a castigat";
+loosesingle=1;
 lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma-miza;
 }
 if (sumajucator>21)
     {cout<<"Dealerul a castigat";
     ok1=1;
+    loosesingle=1;
     lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma-miza;}
 if (ok1==0&&sumacomputer>21&&sumajucator<=21)
     {ok1=1;
+    loosesingle=0;
     cout<<"Felicitari, ati castigat!";
     lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma+miza;}
 if(sumajucator==sumacomputer&&ok1==0)
 {
  ok1=1;
+ loosesingle=-1;
  cout<<"Remiza";
 }
 cout<<endl;
@@ -1132,6 +1158,16 @@ if(choice==2)
      else if (choice==1)
         choice=1;
        else choice=0;
+if (nrgames==1)
+    if(loosesingle==0)
+    lista[cautareJucator(jucatorComputer)].suma+=miza;
+else
+    lista[cautareJucator(jucatorComputer)].suma-=miza;
+if(lista[cautareJucator(jucatorComputer)].suma==0)
+{
+    cout<<endl<<"Ati ramas fara bani. Dezvoltatorul jocului va mai ofera 1000 de fise"<<endl;
+    lista[cautareJucator(jucatorComputer)].suma=1000;
+}
 }
 int i,j=0,ok=0,valid=0,sumaplayer1=0,sumaplayer2=0;
 int banipl1,banipl2;
@@ -1374,6 +1410,16 @@ if(numar==1)
     lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma + mizajocindoi;
 else
     lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma - mizajocindoi;
+if(lista[cautareJucator(player1)].suma==0)
+{
+    cout<<endl<<player1<<", ati ramas fara bani. Dezvoltatorul jocului va mai ofera 1000 de fise"<<endl;
+    lista[cautareJucator(player1)].suma=1000;
+}
+if(lista[cautareJucator(player2)].suma==0)
+{
+    cout<<endl<<player2<<", ati ramas fara bani. Dezvoltatorul jocului va mai ofera 1000 de fise"<<endl;
+    lista[cautareJucator(player2)].suma=1000;
+}
 }//choice 2
 if (choice==3)
 {
