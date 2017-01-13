@@ -932,8 +932,8 @@ void hit(int &suma,int &cartea)
 }
 
 int main()
-{unsigned int i,menu=1,sumajucatorcomp;
-int miza,loosesingle=0,nrgames=0,hiddencard,dublare=0,b;
+{unsigned int i,menu=1,sumajucatorcomp=0;
+int miza=0,loosesingle=0,nrgames=0,hiddencard,dublare=0,b;
 char s[100],s2,jucatorComputer[100],mizacomp[100];
     char nin[100];
 unsigned int choice;
@@ -971,7 +971,7 @@ while (choice==1)
     sumacomputer=0;
 
     sumajucatorcomp=lista[cautareJucator(jucatorComputer)].suma;
-    cout<<endl<<"Dispuneti de suma:"<<sumajucatorcomp<<endl;
+    cout<<endl<<"Dispuneti de suma:"<<lista[cautareJucator(jucatorComputer)].suma<<endl;
     cout<<"Introduceti suma pe care vreti sa o pariati:";
     do{
         cin>>mizacomp;
@@ -1158,10 +1158,10 @@ if(choice==2)
      else if (choice==1)
         choice=1;
        else choice=0;
-if (nrgames==1)
+if (nrgames==1&&0==2)
     if(loosesingle==0)
     lista[cautareJucator(jucatorComputer)].suma+=miza;
-else
+else if(loosesingle==1)
     lista[cautareJucator(jucatorComputer)].suma-=miza;
 if(lista[cautareJucator(jucatorComputer)].suma==0)
 {
