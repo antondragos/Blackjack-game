@@ -7,6 +7,21 @@
 #include<stdio.h>
 using namespace std;
 carte pachet[52];
+void showHiddenCard()
+{
+    cout<<endl;
+        cout<<" ____________"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|############|"<<endl;
+        cout<<"|____________|"<<endl;
+        cout<<endl;
+}
 struct listajucatori{
 char nume[100];
 int suma;
@@ -916,7 +931,7 @@ void hit(int &suma,int &cartea)
 
 int main()
 {unsigned int i,menu=1,sumajucatorcomp;
-int miza,b;
+int miza,hiddencard,b;
 char s[100],s2,jucatorComputer[100],mizacomp[100];
     char nin[100];
 unsigned int choice;
@@ -959,6 +974,9 @@ while (choice==1)
 
     }while(miza==-1);
     cout<<endl;
+     cout<<endl<<endl<<"                         MIZA JOCULUI VA FI:"<<miza<<endl;
+     system("PAUSE");
+     system("CLS");
     card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
@@ -984,9 +1002,9 @@ if(sumacomputer>21&&asi!=0)
     sumacomputer=sumacomputer-10;
 }
     cout<<"Dealer's hand:"<<endl;
-   showcard(card);
+  hiddencard=card;
+  showHiddenCard();
    showcard(card2);
-    cout<<"("<<sumacomputer<<")"<<endl;
     system("PAUSE");
     system("CLS");
  while (sumacomputer<=16)
@@ -1004,7 +1022,6 @@ if(sumacomputer>21&&asi!=0)
          asi--;
          sumacomputer=sumacomputer-10;
      }
-     cout<<" ("<<sumacomputer<<")";
      cout<<endl;
  }
  system("PAUSE");
@@ -1073,6 +1090,9 @@ do{ cout<<"Do you want to hit(press h) or to stay(press s):";
 system("CLS");}
 int ok1=0;
 cout<<endl;
+cout<<"Prima carte a dealerului a fost:"<<endl;
+showcard(hiddencard);
+cout<<endl;
 cout<<"Dealerul are "<<sumacomputer<<" puncte";
 cout<<endl;
 cout<<"Dumneavoastra aveti "<<sumajucator<<" puncte";
@@ -1129,6 +1149,7 @@ if(choice==2)
     cin>>player2;
     cout<<"Aveti suma:"<<banipl2;
     cout<<endl;
+    system("PAUSE");
 }
 system("CLS");
 while (choice==2)
@@ -1161,9 +1182,10 @@ while (choice==2)
             mizajocindoi2=banipl2;
 
     }while(mizajocindoi2==-1);
-    system("PAUSE");
 if(mizajocindoi2<mizajocindoi)
         mizajocindoi=mizajocindoi2;
+        cout<<endl<<endl<<"                         MIZA JOCULUI VA FI:"<<mizajocindoi<<endl;
+    system("PAUSE");
     system("CLS");
 cout<<"Buna, "<<player1<<", tu vei incepe primul"<<endl;
     system("Pause");
