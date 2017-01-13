@@ -2,22 +2,28 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="36735" topLine="461" />
+		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="28" />
+			<Collapse line="41" />
+			<Collapse line="61" />
+			<Collapse line="103" />
+			<Collapse line="116" />
+			<Collapse line="129" />
+			<Collapse line="875" />
+			<Collapse line="882" />
+			<Collapse line="892" />
+			<Collapse line="901" />
+			<Collapse line="907" />
+		</Folding>
+	</File>
 	<File name="BJ_header.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="220" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="32073" topLine="426" />
-		</Cursor>
-		<Folding>
-			<Collapse line="93" />
-			<Collapse line="839" />
-			<Collapse line="845" />
-			<Collapse line="854" />
-			<Collapse line="862" />
-			<Collapse line="867" />
-		</Folding>
 	</File>
 </CodeBlocks_layout_file>

@@ -7,6 +7,37 @@
 #include<stdio.h>
 using namespace std;
 carte pachet[52];
+struct listajucatori{
+char nume[100];
+int suma;
+};
+int n=0;
+listajucatori lista[1000];
+
+int sumapariata(char sumapar[100])
+{ int bani=0,ok=1;
+    for(int i=0;i<strlen(sumapar);i++)
+        if(sumapar[i]-'0'<0||sumapar[i]-'0'>9)
+                ok=0;
+            else bani=bani*10+sumapar[i]-'0';
+    if (ok==1)
+                return bani;
+    else return -1;
+}
+
+int cautareJucator(char name[])
+{
+    for(int i=0;i<n;i++)
+    {
+    if (strcmp(name,lista[i].nume)==0)
+            return i;
+    }
+n++;
+lista[n].suma=1000;
+strcpy(lista[n].nume,name);
+return n;
+}
+
 void info()
 {
     cout<<"                                 Blackjack"<<endl<<endl<<endl;
@@ -26,6 +57,7 @@ void info()
     cout<<endl<<endl<<endl;
     cout<<"                                 Bucurati-va de joc!";
 }
+
 void meniu()
 {
 int j=1;
@@ -70,6 +102,7 @@ cout<<(char)188;
 
 void cinhitstay(char & hitst, char N[100])
 {
+
     if(strlen(N)>1)
         cout<<endl<<"Selectie gresita. Mai incercati:";
     else if(strlen(N)==1&&(N[0]!='h'&& N[0]!='s'&& N[0]!='d'))
@@ -78,6 +111,8 @@ void cinhitstay(char & hitst, char N[100])
             cout<<endl<<"Selectie gresita.Mai incercati"<<endl;
             else hitst=N[0];
 }
+
+
 void citirealegere(unsigned int &alegere, char s[100])
 {
     if(strlen(s)>1)
@@ -90,6 +125,7 @@ void citirealegere(unsigned int &alegere, char s[100])
                 alegere=s[0]-'0';
 
 }
+
 void showcard(int card1)
 { if (strcmp(pachet[card1].simbol,"romb")==0)
    {
@@ -842,6 +878,7 @@ void randCard(unsigned int & a)
     a= (rand()%52);
 
 }
+
 void creare_pachet()
 {unsigned int i;
 for(i=0;i<52;i++)
@@ -851,6 +888,7 @@ else if(i<26) strcpy(pachet[i].simbol,"romb");
 else if(i<39)strcpy(pachet[i].simbol,"frunza");
 else strcpy(pachet[i].simbol,"trefla");
 }}
+
 int lansare_carte()
 {unsigned int c;
 randCard(c);
@@ -859,11 +897,13 @@ while (pachet[c].aparitie==1)
     pachet[c].aparitie=1;
 return c;
 }
+
 void initializareFrecventa()
 {int i;
     for(i=0;i<52;i++)
     pachet[i].aparitie=0;
 }
+
 void hit(int &suma,int &cartea)
 {
 
@@ -875,12 +915,15 @@ void hit(int &suma,int &cartea)
 }
 
 int main()
-{unsigned int i,menu=1,b;
-char s[100];
+{unsigned int i,menu=1,sumajucatorcomp;
+int miza,b;
+char s[100],s2,jucatorComputer[100],mizacomp[100];
     char nin[100];
 unsigned int choice;
+
 while(menu==1)
-{system("CLS");
+{
+    system("CLS");
     creare_pachet();
 initializareFrecventa();
 meniu();
@@ -893,17 +936,39 @@ citirealegere(choice,s);
 system("CLS");
 int card,card2;
 int sumajucator=0,asi=0,sumacomputer=0;
+if (choice==1)
+{
+    cout<<endl;
+    cout<<"Introduceti un nume de utilizator:";
+    cin>>jucatorComputer;
+}
 while (choice==1)
 {initializareFrecventa();
 {//computer
+    sumajucator=0;
+    sumacomputer=0;
+
+    sumajucatorcomp=lista[cautareJucator(jucatorComputer)].suma;
+    cout<<endl<<"Dispuneti de suma:"<<sumajucatorcomp<<endl;
+    cout<<"Introduceti suma pe care vreti sa o pariati:";
+    do{
+        cin>>mizacomp;
+        miza=sumapariata(mizacomp);
+        if (miza>sumajucatorcomp)
+            miza=sumajucatorcomp;
+
+    }while(miza==-1);
+    cout<<endl;
     card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
     sumacomputer=pachet[card2].numar+pachet[card].numar;
-else if(pachet[card2].numar<11)
+ else if(pachet[card2].numar<11&&pachet[card].numar>=11)
     sumacomputer=10+pachet[card2].numar;
-else
+ else if(pachet[card].numar<11 &&pachet[card2].numar>=11)
    sumacomputer=10+pachet[card].numar;
+ else
+    sumacomputer=20;
 if(pachet[card2].numar==1)
 {asi++;
  sumacomputer=sumacomputer+10;
@@ -947,15 +1012,17 @@ if(sumacomputer>21&&asi!=0)
 }
 { char hitstay;
 asi=0;
+sumajucator=0;
 char nin[100];
 card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
     sumajucator=pachet[card2].numar+pachet[card].numar;
-else if(pachet[card2].numar<11)
+else if(pachet[card2].numar<11&&pachet[card].numar>=11)
     sumajucator=10+pachet[card2].numar;
-else
+else if(pachet[card2].numar>=11&&pachet[card].numar<11)
    sumajucator=10+pachet[card].numar;
+   else sumajucator=20;
 if(pachet[card2].numar==1)
 {asi++;
  sumajucator=sumajucator+10;
@@ -977,52 +1044,57 @@ if(sumajucator>21&&asi!=0)
     cout<<" ";
     cout<<"("<<sumajucator<<")"<<endl;
 do{ cout<<"Do you want to hit(press h) or to stay(press s):";
+  hitstay='y';
    while(hitstay=='y')
    {gets(nin);
    cinhitstay(hitstay,nin);
    }
    system("CLS");
-   cout<<endl;
-   if(hitstay=='h')
-   {
-    hit(sumajucator,card2);
-     if(pachet[card2].numar==1)
-     {
-         asi++;
-         sumajucator=sumajucator+10;
-     }
-     if (sumajucator>21&&asi!=0)
-     {
-         asi--;
-         sumajucator=sumajucator-10;
-     }
+ if(hitstay=='h')
+ {
+     card2=lansare_carte();
+     if(pachet[card2].numar>10)
+        sumajucator=sumajucator+10;
+     else if(pachet[card2].numar>1)
+        sumajucator=sumajucator+pachet[card2].numar;
+     else{asi++;
+          sumajucator=sumajucator+11;}
+    if(sumajucator>21&&asi>0)
+    {
+        sumajucator-=10;
+        asi--;
+    }
     showcard(card2);
-   cout<<" ("<<sumajucator<<")";
-   cout<<endl;
-   }
+    cout<<endl<<"("<<sumajucator<<")"<<endl;
+ }
    if(sumajucator>21)
     system("PAUSE");
-  } while(hitstay!='s'&&sumajucator<=21);
+  } while(hitstay=='h'&&sumajucator<=21);
 system("CLS");}
+int ok1=0;
 cout<<endl;
 cout<<"Dealerul are "<<sumacomputer<<" puncte";
 cout<<endl;
 cout<<"Dumneavoastra aveti "<<sumajucator<<" puncte";
 cout<<endl;
 if(sumajucator<=21&&sumacomputer<=21&&sumacomputer<sumajucator)
-    cout<<"Felicitari, ati castigat!";
+    {cout<<"Felicitari, ati castigat!";
+    lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma +miza;}
 if(sumajucator<=21&&sumacomputer<=21&&sumacomputer>sumajucator)
-cout<<"Dealerul a castigat";
-int ok=0;
+{cout<<"Dealerul a castigat";
+lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma-miza;
+}
 if (sumajucator>21)
     {cout<<"Dealerul a castigat";
-    ok=1;}
-if (ok==0&&sumacomputer>21&&sumajucator<=21)
-    {ok=1;
-    cout<<"Felicitari, ati castigat!";}
-if(sumajucator==sumacomputer&&ok==0)
+    ok1=1;
+    lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma-miza;}
+if (ok1==0&&sumacomputer>21&&sumajucator<=21)
+    {ok1=1;
+    cout<<"Felicitari, ati castigat!";
+    lista[cautareJucator(jucatorComputer)].suma=lista[cautareJucator(jucatorComputer)].suma+miza;}
+if(sumajucator==sumacomputer&&ok1==0)
 {
- ok=1;
+ ok1=1;
  cout<<"Remiza";
 }
 cout<<endl;
@@ -1041,22 +1113,59 @@ if(choice==2)
         choice=1;
        else choice=0;
 }
-
-if (choice==2)
-{char player1[100],player2[100];
-    int card,card2;
-   initializareFrecventa();
-    cout<<"Introduceti numele primului jucator:";
+int i,j=0,ok=0,valid=0,sumaplayer1=0,sumaplayer2=0;
+int banipl1,banipl2;
+char mizapl1[100],mizapl2[100];
+char player1[100],player2[100];
+int lose=0,numar=0;
+if(choice==2)
+{ banipl1=lista[cautareJucator(player1)].suma,banipl2=lista[cautareJucator(player2)].suma;
+     cout<<"Introduceti numele primului jucator"<<endl;
+    cout<<"(Daca ati mai jucat, scrieti numele utilizat ultima data pentru a continua de la suma pe care o aveati deja):";
     cin>>player1;
+    cout<<"Aveti suma:"<<banipl1;
     cout<<endl<<"Introduceti numele celui de-al doilea jucator:";
+    cout<<"(Daca ati mai jucat, scrieti numele utilizat ultima data pentru a continua de la suma pe care o aveati deja):";
     cin>>player2;
+    cout<<"Aveti suma:"<<banipl2;
     cout<<endl;
+}
+system("CLS");
+while (choice==2)
+{numar++;
+    int card,card2;
+    int mizajocindoi=-1,mizajocindoi2=-1;
+     banipl1=lista[cautareJucator(player1)].suma;
+     banipl2=lista[cautareJucator(player2)].suma;
+   initializareFrecventa();
+
     cout<<"Salutari "<<player1<<" si "<<player2<<"! Distractie placuta!";
     cout<<endl;
+    cout<<endl<<player1<<endl<<"Dispuneti de suma:"<<banipl1<<endl;
+    cout<<"Introduceti suma pe care vreti sa o pariati:";
+    do{
+        cin>>mizapl1;
+        mizajocindoi=sumapariata(mizapl1);
+        if (mizajocindoi>banipl1)
+            mizajocindoi=banipl1;
+
+    }while(mizajocindoi==-1);
+
+    cout<<endl;
+    cout<<endl<<player2<<endl<<"Dispuneti de suma:"<<banipl2<<endl;
+    cout<<"Introduceti suma pe care vreti sa o pariati:";
+    do{
+        cin>>mizapl2;
+        mizajocindoi2=sumapariata(mizapl2);
+        if (mizajocindoi2>banipl2)
+            mizajocindoi2=banipl2;
+
+    }while(mizajocindoi2==-1);
     system("PAUSE");
+if(mizajocindoi2<mizajocindoi)
+        mizajocindoi=mizajocindoi2;
     system("CLS");
-while(choice==2)
-    {cout<<"Buna, "<<player1<<", tu vei incepe primul"<<endl;
+cout<<"Buna, "<<player1<<", tu vei incepe primul"<<endl;
     system("Pause");
     system("CLS");
      char hitstay3='y',hitstay2='y';
@@ -1067,10 +1176,11 @@ card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
     sumajucator2=pachet[card2].numar+pachet[card].numar;
-else if(pachet[card2].numar<11)
+else if(pachet[card2].numar<11&&pachet[card].numar>=11)
     sumajucator2=10+pachet[card2].numar;
-else
+else if(pachet[card2].numar>=11&&pachet[card].numar<11)
    sumajucator2=10+pachet[card].numar;
+   else sumajucator2=20;
 if(pachet[card2].numar==1)
 {asi++;
  sumajucator2=sumajucator2+10;
@@ -1092,6 +1202,7 @@ if(sumajucator2>21&&asi!=0)
     cout<<" ";
     cout<<"("<<sumajucator2<<")"<<endl;
 do{ cout<<player1<<", do you want to hit(press h) or to stay(press s)?:";
+   hitstay2='y';
    while(hitstay2=='y')
    {gets(nin);
    cinhitstay(hitstay2,nin);
@@ -1117,7 +1228,7 @@ do{ cout<<player1<<", do you want to hit(press h) or to stay(press s)?:";
    }
    if(sumajucator2>21)
     system("PAUSE");
-  } while(hitstay2!='s'&&sumajucator2<=21);
+  } while(hitstay2=='h'&&sumajucator2<=21);
 system("CLS");
  cout<<"Buna, "<<player2<<", acum e randul tau "<<endl;
     system("Pause");
@@ -1128,10 +1239,11 @@ card=lansare_carte();
 card2=lansare_carte();
 if(pachet[card2].numar<11&& pachet[card].numar<11)
     sumajucator3=pachet[card2].numar+pachet[card].numar;
-else if(pachet[card2].numar<11)
+else if(pachet[card2].numar<11&&pachet[card].numar>=11)
     sumajucator3=10+pachet[card2].numar;
-else
+else if(pachet[card2].numar>=11&&pachet[card].numar<11)
    sumajucator3=10+pachet[card].numar;
+   else sumajucator3=20;
 if(pachet[card2].numar==1)
 {asi++;
  sumajucator3=sumajucator3+10;
@@ -1153,6 +1265,7 @@ if(sumajucator3>21&&asi!=0)
     cout<<" ";
     cout<<"("<<sumajucator3<<")"<<endl;
 do{ cout<<player2<<", do you want to hit(press h) or to stay(press s)?:";
+   hitstay3='y';
    while(hitstay3=='y')
    {gets(nin);
    cinhitstay(hitstay3,nin);
@@ -1178,28 +1291,40 @@ do{ cout<<player2<<", do you want to hit(press h) or to stay(press s)?:";
    }
    if(sumajucator3>21)
     system("PAUSE");
-  } while(hitstay3!='s'&&sumajucator3<=21);
+  } while(hitstay3=='h'&&sumajucator3<=21);
 system("CLS");
 cout<<endl;
 cout<<player1<<" are:"<<sumajucator2<<" puncte";
 cout<<endl;
 cout<<player2<<" are:"<<sumajucator3<<" puncte";
 cout<<endl;
-if(sumajucator2<=21&&sumajucator3<=21&&sumajucator2<sumajucator3)
-    cout<<"Felicitari, "<<player2<<", ai castigat!";
-if(sumajucator2<=21&&sumajucator3<=21&&sumajucator2>sumajucator3)
-cout<<"Felicitari, "<<player1<<", ai castigat!";
 int ok2=0;
-if(sumajucator2>22&&sumajucator3>22)
+if(sumajucator2<=21&&sumajucator3<=21&&sumajucator2<sumajucator3&&ok2==0)
+    {cout<<"Felicitari, "<<player2<<", ai castigat!";
+    ok2=1;
+    lose=1;
+        lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma +mizajocindoi;
+    lista[cautareJucator(player1)].suma=lista[cautareJucator(player1)].suma - mizajocindoi;}
+if(sumajucator2<=21&&sumajucator3<=21&&sumajucator2>sumajucator3&&ok2==0)
+{cout<<"Felicitari, "<<player1<<", ai castigat!";
+ok2=1;
+ lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma -mizajocindoi;
+    lista[cautareJucator(player1)].suma=lista[cautareJucator(player1)].suma + mizajocindoi;}
+if(sumajucator2>22&&sumajucator3>22&&ok2==0)
 {
     cout<<"Remiza";
     ok2=1;
 }
-if (sumajucator2>21&&sumajucator3<22)
+if (sumajucator2>21&&sumajucator3<22&&ok2==0)
     {cout<<"Felicitari, "<<player2<<", ai castigat!";
-    ok2=1;}
+     lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma +mizajocindoi;
+    lista[cautareJucator(player1)].suma=lista[cautareJucator(player1)].suma - mizajocindoi;
+    ok2=1;
+    lose=1;}
 if (ok2==0&&sumajucator3>21&&sumajucator2<=21)
     {ok2=1;
+     lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma -mizajocindoi;
+    lista[cautareJucator(player1)].suma=lista[cautareJucator(player1)].suma +mizajocindoi;
     cout<<"Felicitari, "<<player1<<", ai castigat!";}
 if(sumajucator3==sumajucator2&&ok2==0)
 {
@@ -1216,13 +1341,17 @@ while(choice==0)
 {gets(s);
 citirealegere(choice,s);
 }
-if (choice==1)
-    choice=2;
-if (choice==2)
-{menu=1;
-choice=0;
-}
-}
+if(choice==2)
+    {choice=0;
+     menu=1;}
+     else if (choice==1)
+        choice=2;
+       else choice=0;
+if(numar==1)
+    if(lose==1)
+    lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma + mizajocindoi;
+else
+    lista[cautareJucator(player2)].suma=lista[cautareJucator(player2)].suma - mizajocindoi;
 }//choice 2
 if (choice==3)
 {
